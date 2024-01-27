@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://caammmp2njvsd"]
+
+[ext_resource type="Texture2D" uid="uid://dwpi1aoso2trr" path="res://assets/images/food_bits/food_bit_1.png" id="1_wdvve"]
+[ext_resource type="Script" path="res://src/minigames/monch/monch_particle.gd" id="2_hpybs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5fka"]
+render_priority = 10
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_wdvve")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uyul2"]
+material = SubResource("StandardMaterial3D_r5fka")
+
+[sub_resource type="Curve" id="Curve_pf0qk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.474638, 1), 0.0, 0.0, 0, 0, Vector2(0.869565, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_oiwf3"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.226667, 0.5, 0.726667)
+colors = PackedColorArray(0.757985, 0.444798, 0.231573, 1, 0.0549612, 0.674054, 0.279587, 1, 0.843678, 0.414897, 0.362684, 1, 1, 0.913, 0.13, 1)
+
+[node name="MonchParticle" type="CPUParticles3D"]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_uyul2")
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.5
+initial_velocity_max = 3.5
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+orbit_velocity_curve = null
+damping_min = 9.0
+damping_max = 9.0
+angle_min = -85.5
+angle_max = 105.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_pf0qk")
+color_initial_ramp = SubResource("Gradient_oiwf3")
+script = ExtResource("2_hpybs")

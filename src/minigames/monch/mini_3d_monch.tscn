@@ -1,0 +1,153 @@
+[gd_scene load_steps=33 format=3 uid="uid://r5sgv1cem0k6"]
+
+[ext_resource type="Texture2D" uid="uid://bnr52c8x5fd7s" path="res://assets/images/burger/burger.png" id="1_ddcwy"]
+[ext_resource type="Script" path="res://src/minigames/monch/mini_3d_monch.gd" id="1_mc0ec"]
+[ext_resource type="Texture2D" uid="uid://dxo75a647nw6e" path="res://assets/images/monch_face/monch_brows_mad.png" id="1_p4v5u"]
+[ext_resource type="Script" path="res://src/minigames/monch/monch_man.gd" id="1_xs5ks"]
+[ext_resource type="Texture2D" uid="uid://uqk2rb36ffx5" path="res://assets/images/monch_face/monch_face_blank.png" id="2_eeqji"]
+[ext_resource type="Texture2D" uid="uid://dlesf3ju5tvm0" path="res://assets/images/serving_hand/serving_hand.png" id="2_mmr8r"]
+[ext_resource type="Texture2D" uid="uid://dde6qk22bgq4f" path="res://assets/images/monch_face/monch_eyes_open.png" id="3_egj43"]
+[ext_resource type="Texture2D" uid="uid://sp8cuphkq088" path="res://assets/images/monch_face/monch_brows_sad.png" id="3_na1uy"]
+[ext_resource type="Texture2D" uid="uid://c5igownaj0hs2" path="res://assets/images/monch_face/monch_mouf_open.png" id="4_nkpyl"]
+[ext_resource type="Texture2D" uid="uid://wgwtt650dtps" path="res://assets/images/monch_face/monch_eyes_sad.png" id="5_3kpwm"]
+[ext_resource type="Texture2D" uid="uid://b7polq7gp1m1f" path="res://assets/images/monch_face/monch_eyes_glad.png" id="6_3aumw"]
+[ext_resource type="Texture2D" uid="uid://bugssr8s1dqpr" path="res://assets/images/monch_face/monch_mouf_closed.png" id="8_fcvc3"]
+[ext_resource type="Texture2D" uid="uid://blv16gb4tijeu" path="res://assets/images/monch_face/monch_mouf_sad.png" id="9_4n2gj"]
+[ext_resource type="Texture2D" uid="uid://ceyuck02jugvr" path="res://assets/images/monch_face/monch_mouf_smile.png" id="10_7uq7t"]
+[ext_resource type="Script" path="res://src/minigames/monch/mouf_area_3d.gd" id="12_l362e"]
+[ext_resource type="Script" path="res://src/minigames/monch/food.gd" id="13_oknfu"]
+[ext_resource type="PackedScene" uid="uid://caammmp2njvsd" path="res://src/minigames/monch/monch_particle.tscn" id="15_crwb6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xy452"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_p4v5u")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mdgha"]
+material = SubResource("StandardMaterial3D_xy452")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oirn2"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_eeqji")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5b0my"]
+material = SubResource("StandardMaterial3D_oirn2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xxuv"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_egj43")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lufy4"]
+material = SubResource("StandardMaterial3D_5xxuv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxh4s"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_nkpyl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_glypy"]
+material = SubResource("StandardMaterial3D_kxh4s")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_64w3n"]
+radius = 0.202115
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72ixp"]
+render_priority = 2
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_ddcwy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bjnie"]
+material = SubResource("StandardMaterial3D_72ixp")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_06mp0"]
+radius = 0.240774
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_va8e4"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_mmr8r")
+
+[sub_resource type="QuadMesh" id="QuadMesh_n2uqh"]
+material = SubResource("StandardMaterial3D_va8e4")
+
+[sub_resource type="Environment" id="Environment_l28su"]
+background_mode = 1
+background_color = Color(0.329412, 0.4, 0.490196, 1)
+
+[node name="Mini3D_Monch" type="Node3D"]
+script = ExtResource("1_mc0ec")
+
+[node name="MonchMan" type="Node3D" parent="." node_paths=PackedStringArray("brows", "eyes", "mouf", "mouf_area")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318, 0.053, 0)
+script = ExtResource("1_xs5ks")
+brows = NodePath("Brows")
+brow_mad = ExtResource("1_p4v5u")
+brow_sad = ExtResource("3_na1uy")
+eyes = NodePath("Eyes")
+eyes_open = ExtResource("3_egj43")
+eyes_sad = ExtResource("5_3kpwm")
+eyes_glad = ExtResource("6_3aumw")
+mouf = NodePath("Mouth")
+mouf_area = NodePath("Mouth/MoufArea3D")
+mouf_open = ExtResource("4_nkpyl")
+mouf_closed = ExtResource("8_fcvc3")
+mouf_sad = ExtResource("9_4n2gj")
+mouf_glad = ExtResource("10_7uq7t")
+
+[node name="Brows" type="MeshInstance3D" parent="MonchMan"]
+mesh = SubResource("QuadMesh_mdgha")
+skeleton = NodePath("../Base")
+
+[node name="Base" type="MeshInstance3D" parent="MonchMan"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.012)
+mesh = SubResource("QuadMesh_5b0my")
+
+[node name="Eyes" type="MeshInstance3D" parent="MonchMan"]
+mesh = SubResource("QuadMesh_lufy4")
+
+[node name="Mouth" type="MeshInstance3D" parent="MonchMan"]
+mesh = SubResource("QuadMesh_glypy")
+
+[node name="MoufArea3D" type="Area3D" parent="MonchMan/Mouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0927385, 0)
+script = ExtResource("12_l362e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonchMan/Mouth/MoufArea3D"]
+shape = SubResource("SphereShape3D_64w3n")
+
+[node name="Arm" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38273, -0.278, 0.1)
+
+[node name="Food" type="Node3D" parent="Arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.31, 0)
+script = ExtResource("13_oknfu")
+monched_scene = ExtResource("15_crwb6")
+
+[node name="FoodArea3D" type="Area3D" parent="Arm/Food"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arm/Food/FoodArea3D"]
+mesh = SubResource("QuadMesh_bjnie")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm/Food/FoodArea3D"]
+shape = SubResource("SphereShape3D_06mp0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arm"]
+mesh = SubResource("QuadMesh_n2uqh")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.902)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l28su")
+
+[connection signal="area_entered" from="MonchMan/Mouth/MoufArea3D" to="MonchMan" method="_on_mouf_area_3d_area_entered"]
+[connection signal="area_exited" from="MonchMan/Mouth/MoufArea3D" to="MonchMan" method="_on_mouf_area_3d_area_exited"]
