@@ -13,7 +13,7 @@ var _wibble: float = 0.0
 func _ready() -> void:
 	EventBus.minigame_announce.connect(_on_announce)
 	_start_pos = label_center.position.y
-	announce_label.text = ""
+	visible = false
 
 
 func _physics_process(delta) -> void:
@@ -25,6 +25,7 @@ func _physics_process(delta) -> void:
 func _on_announce(text:String) -> void:
 	visible = true
 	announce_label.text = text
-	var timer = get_tree().create_timer(1.0)
+	var timer = get_tree().create_timer(announce_time)
 	await timer.timeout
 	visible = false
+

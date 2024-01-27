@@ -8,7 +8,8 @@ func _ready() -> void:
 	EventBus.monch_successful.connect(_on_monch_successful)
 	EventBus.monch_failed.connect(_on_monch_failed)
 	EventBus.minigame_timer_timeout.connect(_on_monch_failed)
-
+	
+	super._ready()
 
 
 func _on_monch_failed():

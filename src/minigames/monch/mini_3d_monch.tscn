@@ -80,6 +80,7 @@ background_color = Color(0.329412, 0.4, 0.490196, 1)
 
 [node name="Mini3D_Monch" type="Node3D"]
 script = ExtResource("1_mc0ec")
+game_announce_init = "MONCH!"
 
 [node name="MonchMan" type="Node3D" parent="." node_paths=PackedStringArray("brows", "eyes", "mouf", "mouf_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318, 0.053, 0)
