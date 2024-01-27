@@ -36,7 +36,7 @@ func _ready() -> void:
 	_mouf_mat = mouf.mesh.surface_get_material(0) as StandardMaterial3D
 	_eye_mat = eyes.mesh.surface_get_material(0) as StandardMaterial3D
 	_brow_mat = brows.mesh.surface_get_material(0) as StandardMaterial3D
-	
+	_default_face()
 	EventBus.minigame_won.connect(_on_game_won)
 	EventBus.minigame_lost.connect(_on_game_lost)
 
@@ -67,6 +67,12 @@ func _monch() -> void:
 	else:
 		_monchable.monch(mouf_area)
 		EventBus.monch_successful.emit(_monchable)
+
+
+func _default_face() -> void:
+	_mouf_mat.albedo_texture = mouf_open
+	_brow_mat.albedo_texture = brow_mad
+	_eye_mat.albedo_texture = eyes_open
 
 
 func _happy_face() -> void:
