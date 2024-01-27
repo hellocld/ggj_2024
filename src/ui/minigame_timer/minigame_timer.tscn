@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://hbncdk6hdlak"]
+[gd_scene load_steps=4 format=3 uid="uid://hbncdk6hdlak"]
 
 [ext_resource type="Script" path="res://MinigameTimer.gd" id="1_1rdoj"]
+[ext_resource type="Texture2D" uid="uid://bk2i25yckeloi" path="res://assets/images/progress_bar/progress_bar_border.png" id="2_4unrp"]
+[ext_resource type="Texture2D" uid="uid://djqs7cpn7tocl" path="res://assets/images/progress_bar/progress_bar_fill.png" id="3_2uvx7"]
 
 [node name="MinigameTimer" type="Control" node_paths=PackedStringArray("timer_slider")]
 layout_mode = 3
@@ -10,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1rdoj")
-timer_slider = NodePath("MarginContainer/HSlider")
+timer_slider = NodePath("MarginContainer/TextureProgressBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -24,9 +26,17 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="HSlider" type="HSlider" parent="MarginContainer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+max_value = 15.0
 step = 0.001
-editable = false
-scrollable = false
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 60
+stretch_margin_top = 60
+stretch_margin_right = 60
+stretch_margin_bottom = 60
+texture_under = ExtResource("2_4unrp")
+texture_progress = ExtResource("3_2uvx7")
+tint_progress = Color(1, 0, 0.0588235, 1)

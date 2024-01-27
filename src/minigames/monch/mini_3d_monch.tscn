@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://r5sgv1cem0k6"]
+[gd_scene load_steps=37 format=3 uid="uid://r5sgv1cem0k6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr52c8x5fd7s" path="res://assets/images/burger/burger.png" id="1_ddcwy"]
 [ext_resource type="Script" path="res://src/minigames/monch/mini_3d_monch.gd" id="1_mc0ec"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://src/minigames/monch/food.gd" id="13_oknfu"]
 [ext_resource type="Script" path="res://src/minigames/monch/arm.gd" id="14_5uyai"]
 [ext_resource type="PackedScene" uid="uid://caammmp2njvsd" path="res://src/minigames/monch/monch_particle.tscn" id="15_crwb6"]
+[ext_resource type="Texture2D" uid="uid://nstuul0fa01g" path="res://assets/images/monch_back/monch_back.png" id="19_qiyo4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xy452"]
 transparency = 1
@@ -75,8 +76,16 @@ albedo_texture = ExtResource("2_mmr8r")
 [sub_resource type="QuadMesh" id="QuadMesh_n2uqh"]
 material = SubResource("StandardMaterial3D_va8e4")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crx8q"]
+shading_mode = 0
+albedo_color = Color(0.407843, 0.407843, 0.407843, 1)
+albedo_texture = ExtResource("19_qiyo4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_a0ll5"]
+material = SubResource("StandardMaterial3D_crx8q")
+size = Vector2(4, 4)
+
 [sub_resource type="Environment" id="Environment_l28su"]
-background_mode = 1
 background_color = Color(0.329412, 0.4, 0.490196, 1)
 
 [node name="Mini3D_Monch" type="Node3D"]
@@ -142,9 +151,9 @@ shape = SubResource("SphereShape3D_06mp0")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arm"]
 mesh = SubResource("QuadMesh_n2uqh")
 
-[node name="Timer" type="Timer" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18)
+mesh = SubResource("QuadMesh_a0ll5")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.902)

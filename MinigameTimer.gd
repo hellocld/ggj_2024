@@ -1,6 +1,6 @@
 extends Control
 
-@export var timer_slider:HSlider
+@export var timer_slider:TextureProgressBar
 
 var _running:= false
 
