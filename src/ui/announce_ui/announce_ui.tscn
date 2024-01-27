@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://e55di7m4405l"]
+
+[ext_resource type="Script" path="res://src/ui/announce_ui/announce_ui.gd" id="1_moi1j"]
+[ext_resource type="FontFile" uid="uid://c6tbtag2evpci" path="res://assets/fonts/moon_get-Heavy.otf" id="1_pqfs2"]
+
+[node name="AnnounceUI" type="Control" node_paths=PackedStringArray("announce_label", "label_center")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_moi1j")
+announce_label = NodePath("Control/Label")
+label_center = NodePath("Control")
+bob_range = 10.0
+bob_rate = 25.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.148353
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 2
+offset_left = -343.0
+offset_top = -64.0
+offset_right = 343.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("1_pqfs2")
+theme_override_font_sizes/font_size = 128
+text = "MONCH!"
+horizontal_alignment = 1
+vertical_alignment = 1
