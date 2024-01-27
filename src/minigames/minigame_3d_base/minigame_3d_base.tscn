@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7cbmmxbljgs2"]
+
+[ext_resource type="Script" path="res://src/minigames/minigame_3d_base/minigame_3d_base.gd" id="1_gaufr"]
+
+[node name="Minigame3DBase" type="Node3D"]
+script = ExtResource("1_gaufr")
