@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpqf42f76uaf5"]
+[gd_scene load_steps=17 format=3 uid="uid://cpqf42f76uaf5"]
 
 [ext_resource type="Script" path="res://src/minigames/paperplane/mini_3d_paperplane.gd" id="1_t4np3"]
 [ext_resource type="PackedScene" uid="uid://bh6713q2tuca0" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_bottom.tscn" id="3_5wwtu"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4gts4bf3mfdm" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_left.tscn" id="5_tdj8y"]
 [ext_resource type="PackedScene" uid="uid://cnbehbx155mqq" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_right.tscn" id="6_vfdst"]
 [ext_resource type="PackedScene" uid="uid://cy7oajbdps2lb" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_top.tscn" id="7_m0fe0"]
+[ext_resource type="AudioStream" uid="uid://brabxxcgkekv" path="res://assets/music/flight-export-1.ogg" id="8_3yct7"]
 [ext_resource type="PackedScene" uid="uid://cpo86a0m1fk6f" path="res://src/minigames/paperplane/plane_crumple/plane_crumple.tscn" id="9_fsqwi"]
 [ext_resource type="Texture2D" uid="uid://b2eubbudqyom8" path="res://assets/images/food_bits/food_bit_2.png" id="11_ypyxe"]
 
@@ -33,6 +34,7 @@ tunnel_pieces = Array[PackedScene]([ExtResource("4_tx4ab"), ExtResource("3_5wwtu
 game_announce_init = "FLY!"
 game_announce_win = "ACE PILOT!"
 game_announce_lose = "CRASH!"
+main_song = ExtResource("8_3yct7")
 
 [node name="PaperPlane" type="CharacterBody3D" parent="." node_paths=PackedStringArray("model")]
 script = ExtResource("3_xncbp")
