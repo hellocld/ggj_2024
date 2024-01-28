@@ -1,16 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmvtcx370pmk3"]
+[gd_scene load_steps=8 format=3 uid="uid://cmvtcx370pmk3"]
 
 [ext_resource type="PackedScene" uid="uid://e55di7m4405l" path="res://src/ui/announce_ui/announce_ui.tscn" id="1_7f1rk"]
 [ext_resource type="Script" path="res://src/main/main.gd" id="1_yh17e"]
 [ext_resource type="PackedScene" uid="uid://r5sgv1cem0k6" path="res://src/minigames/monch/mini_3d_monch.tscn" id="2_ao800"]
 [ext_resource type="PackedScene" uid="uid://hbncdk6hdlak" path="res://src/ui/minigame_timer/minigame_timer.tscn" id="2_e3x41"]
 [ext_resource type="PackedScene" uid="uid://cpqf42f76uaf5" path="res://src/minigames/paperplane/mini_3d_paperplane.tscn" id="3_w2srm"]
+[ext_resource type="PackedScene" uid="uid://bp5s7la0wdh2b" path="res://src/ui/game_over/game_over.tscn" id="4_ebrqf"]
 [ext_resource type="PackedScene" uid="uid://ch0gp4qfjmbua" path="res://src/ui/curtain/curtain.tscn" id="5_j4e4v"]
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("minigame_root")]
 script = ExtResource("1_yh17e")
 minigame_root = NodePath("MinigameRoot")
 minigames = Array[PackedScene]([ExtResource("2_ao800"), ExtResource("3_w2srm")])
+
+[node name="GameOver" parent="." instance=ExtResource("4_ebrqf")]
 
 [node name="AnnounceUI" parent="." instance=ExtResource("1_7f1rk")]
 

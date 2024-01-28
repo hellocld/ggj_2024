@@ -4,19 +4,22 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventBus.minigame_start.connect(_on_game_start)
-	EventBus.minigame_won.connect(_on_game_end)
-	EventBus.minigame_lost.connect(_on_game_end)
+	EventBus.close_curtain.connect(_on_curtain_close)
+	EventBus.open_curtain.connect(_on_curtain_open)
 	animation_player.play("Open")
 
 
-func _on_game_start():
+func _on_curtain_open():
 	animation_player.play("Open")
 
 
-func _on_game_end():
+func _on_curtain_close():
 	animation_player.play("Close")
-	await animation_player.animation_finished
-	EventBus.minigame_ready_for_next.emit()
 
 
+func _on_curtain_opened():
+	EventBus.curtain_opened.emit()
+
+
+func _on_curtain_closed():
+	EventBus.curtain_closed.emit()

@@ -7,9 +7,8 @@ var _running:= false
 func _ready():
 	EventBus.minigame_start.connect(start_timer)
 	EventBus.minigame_timer_init.connect(init_timer)
-	EventBus.minigame_won.connect(stop_timer)
 	EventBus.minigame_timer_stop.connect(stop_timer)
-	EventBus.minigame_lost.connect(stop_timer)
+	EventBus.game_over.connect(_on_game_over)
 
 
 func _process(delta):
@@ -21,6 +20,7 @@ func _process(delta):
 
 
 func init_timer(time) -> void:
+	visible = true
 	timer_slider.max_value = time
 	timer_slider.value = timer_slider.max_value
 
@@ -31,3 +31,7 @@ func start_timer() -> void:
 
 func stop_timer() -> void:
 	_running = false
+
+
+func _on_game_over():
+	visible = false

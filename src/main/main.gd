@@ -2,37 +2,61 @@ extends Node3D
 
 @export var minigame_root:Node
 @export var minigames:Array[PackedScene]
+@export var max_lives:int = 3
 
 var _current_game:PackedScene
 
+var _lives = max_lives
+
+
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-	EventBus.minigame_ready_for_next.connect(_on_game_won)
-	# TESTING
-	if minigames.size() > 0:
-		_launch_game(minigames[0])
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	EventBus.minigame_cleanup_complete.connect(_on_game_get_next)
+	EventBus.minigame_cleanup.connect(_clear_current_minigame)
+	EventBus.minigame_lost.connect(_on_game_lost)
+	EventBus.game_over.connect(_on_game_over)
+	
+	_on_game_get_next()
 
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
+
 func _launch_game(game:PackedScene) -> void:
-	if minigame_root.get_child_count() > 0:
-		var child = minigame_root.get_child(0)
-		minigame_root.remove_child(child)
-		child.queue_free()
 	var new_game = game.instantiate()
 	minigame_root.add_child(new_game)
 	_current_game = game
+	EventBus.open_curtain.emit()
 
 
-func _on_game_won() -> void:
-	_get_next_random_game()
+func _clear_current_minigame() -> void:
+	MusicPlayer.stop_song()
+	EventBus.close_curtain.emit()
+	await EventBus.curtain_closed
+	for child in minigame_root.get_children():
+		minigame_root.remove_child(child)
+		child.queue_free()
+	EventBus.minigame_cleanup_complete.emit()
+
+
+func _on_game_get_next() -> void:
+	if _lives <= 0:
+		EventBus.game_over.emit()
+	else:
+		_get_next_random_game()
+
+
+func _on_game_lost() -> void:
+	_lives -= 1
 
 
 func _get_next_random_game() -> void:
-	minigames.shuffle()
-	if minigames[0] == _current_game:
-		_get_next_random_game()
-	_launch_game(minigames[0])
+	_launch_game(minigames[randi_range(0, minigames.size() - 1)])
+
+
+func _on_game_over() -> void:
+	EventBus.show_game_over.emit()
+	await EventBus.game_over_screen_ready
+	EventBus.open_curtain.emit()
