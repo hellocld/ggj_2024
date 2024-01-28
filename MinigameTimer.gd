@@ -9,6 +9,7 @@ func _ready():
 	EventBus.minigame_timer_init.connect(init_timer)
 	EventBus.minigame_won.connect(stop_timer)
 	EventBus.minigame_timer_stop.connect(stop_timer)
+	EventBus.minigame_lost.connect(stop_timer)
 
 
 func _process(delta):
