@@ -33,6 +33,7 @@ material = SubResource("StandardMaterial3D_xy452")
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("2_eeqji")
+texture_repeat = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_5b0my"]
 material = SubResource("StandardMaterial3D_oirn2")
