@@ -32,7 +32,6 @@ func _launch_game(game:PackedScene) -> void:
 
 
 func _clear_current_minigame() -> void:
-	MusicPlayer.stop_song()
 	EventBus.close_curtain.emit()
 	await EventBus.curtain_closed
 	for child in minigame_root.get_children():
@@ -59,4 +58,5 @@ func _get_next_random_game() -> void:
 func _on_game_over() -> void:
 	EventBus.show_game_over.emit()
 	await EventBus.game_over_screen_ready
+	MusicPlayer.stop_song()
 	EventBus.open_curtain.emit()
