@@ -22,7 +22,7 @@ func _physics_process(delta):
 	move_vec = move_vec.normalized() * move_speed
 	move_vec.z = -move_speed
 	model.rotation_degrees.x = move_vec.y * 10
-	model.rotation_degrees.y = move_vec.x * -10
+	model.rotation_degrees.z = move_vec.x * -10
 	
 	if move_and_collide(move_vec * delta):
 		_on_collision()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpqf42f76uaf5"]
+[gd_scene load_steps=16 format=3 uid="uid://cpqf42f76uaf5"]
 
 [ext_resource type="Script" path="res://src/minigames/paperplane/mini_3d_paperplane.gd" id="1_t4np3"]
 [ext_resource type="PackedScene" uid="uid://bh6713q2tuca0" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_bottom.tscn" id="3_5wwtu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnbehbx155mqq" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_right.tscn" id="6_vfdst"]
 [ext_resource type="PackedScene" uid="uid://cy7oajbdps2lb" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_top.tscn" id="7_m0fe0"]
 [ext_resource type="PackedScene" uid="uid://cpo86a0m1fk6f" path="res://src/minigames/paperplane/plane_crumple/plane_crumple.tscn" id="9_fsqwi"]
+[ext_resource type="Texture2D" uid="uid://b2eubbudqyom8" path="res://assets/images/food_bits/food_bit_2.png" id="11_ypyxe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rj3i6"]
 radius = 0.0364473
@@ -54,6 +55,26 @@ remote_path = NodePath("../../CameraRoot")
 update_rotation = false
 update_scale = false
 
+[node name="Decal" type="Decal" parent="PaperPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+texture_albedo = ExtResource("11_ypyxe")
+distance_fade_enabled = true
+
+[node name="Decal2" type="Decal" parent="PaperPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+texture_albedo = ExtResource("11_ypyxe")
+distance_fade_enabled = true
+
+[node name="Decal3" type="Decal" parent="PaperPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, -2.18557e-08, 0)
+texture_albedo = ExtResource("11_ypyxe")
+distance_fade_enabled = true
+
+[node name="Decal4" type="Decal" parent="PaperPlane"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.5, 2.18557e-08, 0)
+texture_albedo = ExtResource("11_ypyxe")
+distance_fade_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kdm1r")
 
@@ -70,7 +91,7 @@ light_size = 0.115
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1)
+transform = Transform3D(1, 0, 0, 0, 0.995784, 0.0917276, 0, -0.0917276, 0.995784, 0, 0.182795, 2.1)
 
 [node name="TunnelRoot" type="Node3D" parent="."]
 
