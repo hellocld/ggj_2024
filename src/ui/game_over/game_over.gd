@@ -9,7 +9,8 @@ func _ready() -> void:
 func _process(_delta):
 	if visible:
 		if Input.is_action_just_pressed("interact"):
-			EventBus.main_menu_requested.emit()
+			#EventBus.main_menu_requested.emit()
+			get_tree().quit()
 
 
 func _on_show_game_over():
