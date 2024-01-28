@@ -10,7 +10,7 @@ var _lives = max_lives
 
 
 func _ready() -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	EventBus.minigame_cleanup_complete.connect(_on_game_get_next)
 	EventBus.minigame_cleanup.connect(_clear_current_minigame)
 	EventBus.minigame_lost.connect(_on_game_lost)
