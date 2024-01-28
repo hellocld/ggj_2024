@@ -6,11 +6,16 @@ extends Node3D
 var _current_game:PackedScene
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	EventBus.minigame_ready_for_next.connect(_on_game_won)
 	# TESTING
 	if minigames.size() > 0:
 		_launch_game(minigames[0])
 
+
+func _process(_delta) -> void:
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
 
 func _launch_game(game:PackedScene) -> void:
 	if minigame_root.get_child_count() > 0:
