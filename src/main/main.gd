@@ -3,7 +3,7 @@ extends Node3D
 @export var minigame_root:Node
 @export var minigames:Array[PackedScene]
 
-
+var _current_game:PackedScene
 
 func _ready() -> void:
 	EventBus.minigame_ready_for_next.connect(_on_game_won)
@@ -19,9 +19,15 @@ func _launch_game(game:PackedScene) -> void:
 		child.queue_free()
 	var new_game = game.instantiate()
 	minigame_root.add_child(new_game)
+	_current_game = game
 
 
 func _on_game_won() -> void:
-	minigames.shuffle()
-	_launch_game(minigames[0])
+	_get_next_random_game()
 
+
+func _get_next_random_game() -> void:
+	minigames.shuffle()
+	if minigames[0] == _current_game:
+		_get_next_random_game()
+	_launch_game(minigames[0])

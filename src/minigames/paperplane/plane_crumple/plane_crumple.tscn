@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpo86a0m1fk6f"]
+
+[ext_resource type="PackedScene" uid="uid://bt17tyh7msehe" path="res://assets/models/paper_crumple.glb" id="1_jtw6c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lixfg"]
+radius = 0.218612
+
+[node name="PlaneCrumple" type="RigidBody3D"]
+linear_velocity = Vector3(0, 3, 0)
+
+[node name="paper_crumple" parent="." instance=ExtResource("1_jtw6c")]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0466919, 0)
+shape = SubResource("SphereShape3D_lixfg")

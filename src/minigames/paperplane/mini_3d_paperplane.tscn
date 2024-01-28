@@ -1,0 +1,77 @@
+[gd_scene load_steps=15 format=3 uid="uid://cpqf42f76uaf5"]
+
+[ext_resource type="Script" path="res://src/minigames/paperplane/mini_3d_paperplane.gd" id="1_t4np3"]
+[ext_resource type="PackedScene" uid="uid://bh6713q2tuca0" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_bottom.tscn" id="3_5wwtu"]
+[ext_resource type="Script" path="res://src/minigames/paperplane/paper_plane.gd" id="3_xncbp"]
+[ext_resource type="PackedScene" uid="uid://dm1uwo6875n4f" path="res://assets/models/paper_plane.glb" id="4_gruvg"]
+[ext_resource type="PackedScene" uid="uid://ctvxuqimvl6h4" path="res://src/minigames/paperplane/TunnelParts/tunnel_empty.tscn" id="4_tx4ab"]
+[ext_resource type="PackedScene" uid="uid://bkpjus3wxika7" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_center.tscn" id="5_r7htn"]
+[ext_resource type="PackedScene" uid="uid://4gts4bf3mfdm" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_left.tscn" id="5_tdj8y"]
+[ext_resource type="PackedScene" uid="uid://cnbehbx155mqq" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_right.tscn" id="6_vfdst"]
+[ext_resource type="PackedScene" uid="uid://cy7oajbdps2lb" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_top.tscn" id="7_m0fe0"]
+[ext_resource type="PackedScene" uid="uid://cpo86a0m1fk6f" path="res://src/minigames/paperplane/plane_crumple/plane_crumple.tscn" id="9_fsqwi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rj3i6"]
+radius = 0.0364473
+height = 0.326062
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dwsgr"]
+
+[sub_resource type="Sky" id="Sky_byjey"]
+sky_material = SubResource("PhysicalSkyMaterial_dwsgr")
+
+[sub_resource type="Environment" id="Environment_kdm1r"]
+background_mode = 2
+sky = SubResource("Sky_byjey")
+
+[node name="mini_3d_paperplane" type="Node3D" node_paths=PackedStringArray("tunnel_root")]
+script = ExtResource("1_t4np3")
+tunnel_root = NodePath("TunnelRoot")
+empty_tunnel = ExtResource("4_tx4ab")
+tunnel_pieces = Array[PackedScene]([ExtResource("4_tx4ab"), ExtResource("3_5wwtu"), ExtResource("5_r7htn"), ExtResource("5_tdj8y"), ExtResource("6_vfdst"), ExtResource("7_m0fe0")])
+game_announce_init = "FLY!"
+game_announce_win = "ACE PILOT!"
+game_announce_lose = "CRASH!"
+
+[node name="PaperPlane" type="CharacterBody3D" parent="." node_paths=PackedStringArray("model")]
+script = ExtResource("3_xncbp")
+move_speed = 2.0
+crash_scene = ExtResource("9_fsqwi")
+model = NodePath("paper_plane")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PaperPlane"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.040299, 0.0448335)
+shape = SubResource("CapsuleShape3D_rj3i6")
+
+[node name="paper_plane" parent="PaperPlane" instance=ExtResource("4_gruvg")]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0, 0)
+
+[node name="Cube" parent="PaperPlane/paper_plane" index="0"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PaperPlane"]
+remote_path = NodePath("../../CameraRoot")
+update_rotation = false
+update_scale = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kdm1r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.901629, -0.185389, -0.390764, 0.432511, 0.38647, 0.814601, 0, -0.903477, 0.428636, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CameraRoot" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CameraRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.982996)
+light_energy = 1.535
+light_size = 0.115
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1)
+
+[node name="TunnelRoot" type="Node3D" parent="."]
+
+[editable path="PaperPlane/paper_plane"]
