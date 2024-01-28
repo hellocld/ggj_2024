@@ -4,7 +4,7 @@ extends Node3D
 @export var minigames:Array[PackedScene]
 @export var max_lives:int = 3
 
-var _current_game:PackedScene
+var _current_game_idx:int
 
 var _lives = max_lives
 
@@ -27,7 +27,6 @@ func _process(_delta) -> void:
 func _launch_game(game:PackedScene) -> void:
 	var new_game = game.instantiate()
 	minigame_root.add_child(new_game)
-	_current_game = game
 	EventBus.open_curtain.emit()
 
 
@@ -52,7 +51,12 @@ func _on_game_lost() -> void:
 
 
 func _get_next_random_game() -> void:
-	_launch_game(minigames[randi_range(0, minigames.size() - 1)])
+	var new_game_idx = randi_range(0, minigames.size() - 1)
+	if _current_game_idx == new_game_idx:
+		_get_next_random_game()
+	else:
+		_current_game_idx = new_game_idx
+		_launch_game(minigames[new_game_idx])
 
 
 func _on_game_over() -> void:
