@@ -26,11 +26,11 @@ func _ready() -> void:
 
 func _on_game_lost() -> void:
 	EventBus.minigame_announce.emit(game_announce_lose)
-	if win_song:
+	if lose_song:
 		MusicPlayer.play_song(lose_song)
 
 
 func _on_game_won() -> void:
 	EventBus.minigame_announce.emit(game_announce_win)
-	if lose_song:
+	if win_song:
 		MusicPlayer.play_song(win_song)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://r5sgv1cem0k6"]
+[gd_scene load_steps=39 format=3 uid="uid://r5sgv1cem0k6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr52c8x5fd7s" path="res://assets/images/burger/burger.png" id="1_ddcwy"]
 [ext_resource type="Script" path="res://src/minigames/monch/mini_3d_monch.gd" id="1_mc0ec"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dlesf3ju5tvm0" path="res://assets/images/serving_hand/serving_hand.png" id="2_mmr8r"]
 [ext_resource type="Texture2D" uid="uid://dde6qk22bgq4f" path="res://assets/images/monch_face/monch_eyes_open.png" id="3_egj43"]
 [ext_resource type="Texture2D" uid="uid://sp8cuphkq088" path="res://assets/images/monch_face/monch_brows_sad.png" id="3_na1uy"]
+[ext_resource type="AudioStream" uid="uid://r57dujo5bdb8" path="res://assets/music/success-export-1.ogg" id="3_pr00e"]
 [ext_resource type="Texture2D" uid="uid://c5igownaj0hs2" path="res://assets/images/monch_face/monch_mouf_open.png" id="4_nkpyl"]
 [ext_resource type="Texture2D" uid="uid://wgwtt650dtps" path="res://assets/images/monch_face/monch_eyes_sad.png" id="5_3kpwm"]
 [ext_resource type="Texture2D" uid="uid://b7polq7gp1m1f" path="res://assets/images/monch_face/monch_eyes_glad.png" id="6_3aumw"]
@@ -94,6 +95,7 @@ background_color = Color(0.329412, 0.4, 0.490196, 1)
 script = ExtResource("1_mc0ec")
 game_announce_init = "MONCH!"
 main_song = ExtResource("2_meyig")
+win_song = ExtResource("3_pr00e")
 
 [node name="MonchMan" type="Node3D" parent="." node_paths=PackedStringArray("brows", "eyes", "mouf", "mouf_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318, 0.053, 0)
