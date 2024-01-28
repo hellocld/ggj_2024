@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmvtcx370pmk3"]
+[gd_scene load_steps=9 format=3 uid="uid://cmvtcx370pmk3"]
 
 [ext_resource type="PackedScene" uid="uid://e55di7m4405l" path="res://src/ui/announce_ui/announce_ui.tscn" id="1_7f1rk"]
 [ext_resource type="Script" path="res://src/main/main.gd" id="1_yh17e"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cpqf42f76uaf5" path="res://src/minigames/paperplane/mini_3d_paperplane.tscn" id="3_w2srm"]
 [ext_resource type="PackedScene" uid="uid://bp5s7la0wdh2b" path="res://src/ui/game_over/game_over.tscn" id="4_ebrqf"]
 [ext_resource type="PackedScene" uid="uid://ch0gp4qfjmbua" path="res://src/ui/curtain/curtain.tscn" id="5_j4e4v"]
+[ext_resource type="PackedScene" uid="uid://b62ub51v8pt8i" path="res://src/ui/lives/lives.tscn" id="8_lbuqt"]
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("minigame_root")]
 script = ExtResource("1_yh17e")
@@ -20,6 +21,8 @@ minigames = Array[PackedScene]([ExtResource("2_ao800"), ExtResource("3_w2srm")])
 [node name="MinigameTimer" parent="." instance=ExtResource("2_e3x41")]
 
 [node name="MinigameRoot" type="Node" parent="."]
+
+[node name="Lives" parent="." instance=ExtResource("8_lbuqt")]
 
 [node name="Curtain" parent="." instance=ExtResource("5_j4e4v")]
 z_index = 4096

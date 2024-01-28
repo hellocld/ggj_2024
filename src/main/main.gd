@@ -15,7 +15,7 @@ func _ready() -> void:
 	EventBus.minigame_cleanup.connect(_clear_current_minigame)
 	EventBus.minigame_lost.connect(_on_game_lost)
 	EventBus.game_over.connect(_on_game_over)
-	
+	EventBus.lives_changed.emit(_lives)
 	_on_game_get_next()
 
 
@@ -48,6 +48,7 @@ func _on_game_get_next() -> void:
 
 func _on_game_lost() -> void:
 	_lives -= 1
+	EventBus.lives_changed.emit(_lives)
 
 
 func _get_next_random_game() -> void:

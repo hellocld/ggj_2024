@@ -23,6 +23,8 @@ signal game_over()
 signal show_game_over()
 signal game_over_screen_ready()
 
+signal lives_changed(lives:int)
+
 #region Monch
 signal monch_successful(monchable:Food)
 signal monch_failed()
