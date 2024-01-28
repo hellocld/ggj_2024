@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkpjus3wxika7"]
+[gd_scene load_steps=3 format=3 uid="uid://bkpjus3wxika7"]
 
 [ext_resource type="Material" uid="uid://by2vh14vbxh7s" path="res://assets/materials/checker_triplanar.tres" id="1_84fow"]
+[ext_resource type="Material" uid="uid://dduebdih113bf" path="res://assets/materials/checker_orange_triplanar.tres" id="2_gv5i4"]
 
 [node name="TunnelWallCenter" type="CSGBox3D"]
 use_collision = true
@@ -15,4 +16,4 @@ material = ExtResource("1_84fow")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 size = Vector3(1, 2, 1)
-material = ExtResource("1_84fow")
+material = ExtResource("2_gv5i4")
