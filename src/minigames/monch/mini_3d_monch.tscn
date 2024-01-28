@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://r5sgv1cem0k6"]
+[gd_scene load_steps=41 format=3 uid="uid://r5sgv1cem0k6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr52c8x5fd7s" path="res://assets/images/burger/burger.png" id="1_ddcwy"]
 [ext_resource type="Script" path="res://src/minigames/monch/mini_3d_monch.gd" id="1_mc0ec"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://src/minigames/monch/arm.gd" id="14_5uyai"]
 [ext_resource type="PackedScene" uid="uid://caammmp2njvsd" path="res://src/minigames/monch/monch_particle.tscn" id="15_crwb6"]
 [ext_resource type="Texture2D" uid="uid://nstuul0fa01g" path="res://assets/images/monch_back/monch_back.png" id="19_qiyo4"]
+[ext_resource type="Texture2D" uid="uid://grbuj4nnt4ob" path="res://assets/images/wing/wing.png" id="21_06irb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xy452"]
 transparency = 1
@@ -141,10 +142,12 @@ shape = SubResource("SphereShape3D_64w3n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38273, -0.278, 0.1)
 script = ExtResource("14_5uyai")
 
-[node name="Food" type="Node3D" parent="Arm"]
+[node name="Food" type="Node3D" parent="Arm" node_paths=PackedStringArray("food_mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.31, 0)
 script = ExtResource("13_oknfu")
 monched_scene = ExtResource("15_crwb6")
+food_mesh = NodePath("FoodArea3D/MeshInstance3D")
+food_tex = Array[Texture2D]([ExtResource("1_ddcwy"), ExtResource("21_06irb")])
 
 [node name="FoodArea3D" type="Area3D" parent="Arm/Food"]
 

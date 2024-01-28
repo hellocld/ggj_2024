@@ -2,6 +2,13 @@ class_name Food
 extends Node3D
 
 @export var monched_scene:PackedScene
+@export var food_mesh:MeshInstance3D
+@export var food_tex:Array[Texture2D]
+
+
+func _ready() -> void:
+	var mat = food_mesh.mesh.surface_get_material(0) as StandardMaterial3D
+	mat.albedo_texture = food_tex[randi_range(0, food_tex.size() - 1)]
 
 func monch(mouf:Node3D) -> void:
 	visible = false
