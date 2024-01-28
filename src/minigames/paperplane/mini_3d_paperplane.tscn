@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpqf42f76uaf5"]
+[gd_scene load_steps=18 format=3 uid="uid://cpqf42f76uaf5"]
 
 [ext_resource type="Script" path="res://src/minigames/paperplane/mini_3d_paperplane.gd" id="1_t4np3"]
 [ext_resource type="PackedScene" uid="uid://bh6713q2tuca0" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_bottom.tscn" id="3_5wwtu"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cy7oajbdps2lb" path="res://src/minigames/paperplane/TunnelParts/tunnel_wall_top.tscn" id="7_m0fe0"]
 [ext_resource type="AudioStream" uid="uid://brabxxcgkekv" path="res://assets/music/flight-export-1.ogg" id="8_3yct7"]
 [ext_resource type="PackedScene" uid="uid://cpo86a0m1fk6f" path="res://src/minigames/paperplane/plane_crumple/plane_crumple.tscn" id="9_fsqwi"]
-[ext_resource type="Texture2D" uid="uid://b2eubbudqyom8" path="res://assets/images/food_bits/food_bit_2.png" id="11_ypyxe"]
+[ext_resource type="Texture2D" uid="uid://86of8mvheryp" path="res://assets/images/paper_plane/paper_plane_top.png" id="12_wvp3u"]
+[ext_resource type="Texture2D" uid="uid://lrhvnh34ky11" path="res://assets/images/paper_plane/paper_plane_side.png" id="13_07f6t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rj3i6"]
 radius = 0.0364473
@@ -58,24 +59,14 @@ update_rotation = false
 update_scale = false
 
 [node name="Decal" type="Decal" parent="PaperPlane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-texture_albedo = ExtResource("11_ypyxe")
-distance_fade_enabled = true
-
-[node name="Decal2" type="Decal" parent="PaperPlane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-texture_albedo = ExtResource("11_ypyxe")
+size = Vector3(1, 2.20215, 1)
+texture_albedo = ExtResource("12_wvp3u")
 distance_fade_enabled = true
 
 [node name="Decal3" type="Decal" parent="PaperPlane"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, -2.18557e-08, 0)
-texture_albedo = ExtResource("11_ypyxe")
-distance_fade_enabled = true
-
-[node name="Decal4" type="Decal" parent="PaperPlane"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.5, 2.18557e-08, 0)
-texture_albedo = ExtResource("11_ypyxe")
-distance_fade_enabled = true
+transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, 0, -4.37114e-08, 0)
+size = Vector3(1, 3.27441, 1)
+texture_albedo = ExtResource("13_07f6t")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kdm1r")
@@ -96,5 +87,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 0.995784, 0.0917276, 0, -0.0917276, 0.995784, 0, 0.182795, 2.1)
 
 [node name="TunnelRoot" type="Node3D" parent="."]
+
+[node name="TunnelEmpty" parent="." instance=ExtResource("4_tx4ab")]
 
 [editable path="PaperPlane/paper_plane"]
