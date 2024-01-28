@@ -60,6 +60,7 @@ func _physics_process(delta) -> void:
 
 func _monch() -> void:
 	EventBus.minigame_timer_stop.emit()
+	MusicPlayer.stop_song()
 	_pre_monch = false
 	_mouf_mat.albedo_texture = mouf_closed
 	if _monchable == null:
