@@ -5,20 +5,18 @@
 
 [node name="Lives" type="Control" node_paths=PackedStringArray("lives_container")]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_ff2py")
 heart_tex = ExtResource("1_esjbo")
 lives_container = NodePath("HFlowContainer")
 
 [node name="HFlowContainer" type="HFlowContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 256.0
+offset_bottom = 128.0
 grow_horizontal = 2
 alignment = 1
 

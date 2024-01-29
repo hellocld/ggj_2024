@@ -3,14 +3,15 @@ extends Node3D
 @export var minigame_root:Node
 @export var minigames:Array[PackedScene]
 @export var max_lives:int = 3
-
+@export var hide_mouse:bool = true
 var _current_game_idx:int
 
-var _lives = max_lives
+@onready var _lives = max_lives
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	if hide_mouse:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	EventBus.minigame_cleanup_complete.connect(_on_game_get_next)
 	EventBus.minigame_cleanup.connect(_clear_current_minigame)
 	EventBus.minigame_lost.connect(_on_game_lost)
